@@ -1041,6 +1041,12 @@ Error generating stack: `+e.message+`
     width: 60%;
   }
 `,fe=[{number:`FASE 01`,title:`A Lealdade à Pobreza`,days:`Dias 1 a 7`},{number:`FASE 02`,title:`O Contrato com a Escassez Alheia`,days:`Dias 8 a 14`},{number:`FASE 03`,title:`Significados, Permissão e o Receber`,days:`Dias 15 a 21`},{number:`FASE 04`,title:`Reconstruindo o "Como" e o "Porquê"`,days:`Dias 22 a 28`},{number:`FASE 05`,title:`A Maestria Financeira`,days:`Dias 29 a 33`}],pe=({data:e,highlight:t})=>(0,b.jsxs)(`div`,{className:`phase-card ${t?`highlight`:``}`,children:[(0,b.jsx)(`span`,{className:`phase-eyebrow`,children:e.number}),(0,b.jsx)(`h3`,{className:`phase-title`,children:e.title}),(0,b.jsx)(`div`,{className:`phase-days`,children:e.days})]}),me=()=>{let e=w();return(0,b.jsxs)(S,{id:`contracts`,className:`contracts-section`,children:[(0,b.jsx)(`style`,{children:de}),(0,b.jsxs)(`div`,{ref:e,children:[(0,b.jsxs)(`div`,{className:`contracts-hd reveal`,children:[(0,b.jsx)(`span`,{className:`eyebrow`,children:`A Anatomia da Escassez`}),(0,b.jsx)(`h2`,{children:`Os 33 Contratos`}),(0,b.jsx)(`p`,{children:`Estes são os contratos que vamos eliminar. Cada um deles existe no seu sistema como um significado congelado que decide, sem te pedir licença, quanto de dinheiro é permitido para alguém como você.`})]}),(0,b.jsx)(`div`,{className:`contracts-body reveal reveal-delay-1`,children:(0,b.jsxs)(`div`,{className:`contracts-grid`,children:[(0,b.jsxs)(`div`,{className:`col-1`,children:[(0,b.jsx)(pe,{data:fe[0]}),(0,b.jsx)(pe,{data:fe[1]})]}),(0,b.jsxs)(`div`,{className:`col-2`,children:[(0,b.jsx)(pe,{data:fe[2]}),(0,b.jsx)(pe,{data:fe[3]})]}),(0,b.jsx)(`div`,{className:`col-3`,children:(0,b.jsx)(pe,{data:fe[4],highlight:!0})})]})})]})]})},D=`
+  /* ============================================================
+     INSIDE PROTOCOL SECTION
+  ============================================================ */
+
+  /* ---- Header ---- */
+
   .inside-hd {
     text-align: center;
     margin-bottom: 5rem;
@@ -1056,47 +1062,175 @@ Error generating stack: `+e.message+`
     color: var(--gold-soft);
     font-style: italic;
     margin-top: 0.5rem;
+    margin-bottom: 0;
   }
 
-  .inside-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 100%;
-    margin: 0 auto;
-    align-items: stretch;
+  .section-custom-pb {
+    padding-bottom: 90px !important;
   }
 
-  .schedule-card {
-    text-align: center;
-    padding: 3rem 1.5rem;
+  /* ---- Centered invite wrapper ---- */
+
+  .inside-invite-wrap {
     display: flex;
-    flex-direction: column;
     justify-content: center;
   }
 
-  .schedule-card h3 {
-    color: var(--gold-soft);
-    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
-    margin-bottom: 0.75rem;
-    font-family: var(--font-serif);
-    font-weight: 400;
+  /* ---- Invitation card ---- */
+
+  .inside-invite {
+    width: 100%;
+    max-width: 400px;
+    background: linear-gradient(160deg,
+      rgba(214, 186, 122, 0.065) 0%,
+      rgba(10, 9, 14, 0.6) 100%
+    );
+    border: 1px solid rgba(214, 186, 122, 0.28);
+    border-radius: 3px;
+    padding: 2.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    box-shadow:
+      0 0 80px rgba(214, 186, 122, 0.04) inset,
+      0 1px 0 rgba(214, 186, 122, 0.18) inset;
   }
 
-  .schedule-card p {
+  /* Gold corner ornament top-left */
+  .inside-invite::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 32px;
+    height: 32px;
+    border-top: 1px solid rgba(214, 186, 122, 0.7);
+    border-left: 1px solid rgba(214, 186, 122, 0.7);
+    border-radius: 3px 0 0 0;
+  }
+
+  /* Gold corner ornament bottom-right */
+  .inside-invite::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    width: 32px;
+    height: 32px;
+    border-bottom: 1px solid rgba(214, 186, 122, 0.7);
+    border-right: 1px solid rgba(214, 186, 122, 0.7);
+    border-radius: 0 0 3px 0;
+  }
+
+  /* LIVE badge */
+  .invite-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .invite-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+    box-shadow: 0 0 8px rgba(237, 214, 136, 0.7);
+    animation: livePulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(237, 214, 136, 0.7); }
+    50%       { opacity: 0.35; box-shadow: 0 0 3px rgba(237, 214, 136, 0.2); }
+  }
+
+  /* Day display */
+  .invite-days {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.8vw, 1.875rem);
+    color: var(--text-main);
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* Time — large display */
+  .invite-time {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 7vw, 5.5rem);
+    line-height: 1;
+    color: var(--gold-soft);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 0 60px rgba(214, 186, 122, 0.2);
+  }
+
+  .invite-timezone {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  /* Divider inside card */
+  .invite-rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--line-gold), transparent);
+    margin-bottom: 1.75rem;
+    opacity: 0.4;
+  }
+
+  /* Platform info */
+  .invite-platform {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+
+  .invite-platform-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--gold-soft);
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+
+  .invite-platform-text {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
     color: var(--text-soft);
-    font-size: 1.125rem;
-    margin: 0;
-    line-height: 1.6;
+  }
+
+  /* Closing note */
+  .invite-note {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: var(--font-serif);
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+    font-style: italic;
+    line-height: 1.55;
+    text-align: center;
+    margin-bottom: 0;
   }
 
   @media (max-width: 768px) {
-    .inside-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+    .section-custom-pb {
+      padding-bottom: 40px !important;
     }
   }
-`,O=()=>{let e=w();return(0,b.jsxs)(S,{id:`inside`,dark:!0,children:[(0,b.jsx)(`style`,{children:D}),(0,b.jsxs)(`div`,{ref:e,children:[(0,b.jsxs)(`div`,{className:`inside-hd reveal`,children:[(0,b.jsx)(`span`,{className:`eyebrow`,children:`A Metodologia`}),(0,b.jsx)(`h2`,{children:`O que acontece por dentro`}),(0,b.jsx)(`p`,{className:`tagline`,children:`33 protocolos. Diretas. Sem rodeio.`})]}),(0,b.jsxs)(`div`,{className:`inside-grid`,children:[(0,b.jsx)(`div`,{className:`reveal reveal-delay-1`,children:(0,b.jsxs)(se,{className:`schedule-card`,children:[(0,b.jsx)(`h3`,{children:`Aulas nas Terças`}),(0,b.jsx)(`p`,{children:`às 19:00 pelo Zoom`})]})}),(0,b.jsx)(`div`,{className:`reveal reveal-delay-2`,children:(0,b.jsxs)(se,{className:`schedule-card`,highlight:!0,children:[(0,b.jsx)(`h3`,{children:`Aulas nas Quartas`}),(0,b.jsx)(`p`,{children:`às 19:00 pelo Zoom`})]})}),(0,b.jsx)(`div`,{className:`reveal reveal-delay-3`,children:(0,b.jsxs)(se,{className:`schedule-card`,children:[(0,b.jsx)(`h3`,{children:`Aulas nas Quintas`}),(0,b.jsx)(`p`,{children:`às 19:00 pelo Zoom`})]})})]})]})]})},he=`
+`,O=()=>(0,b.jsxs)(`svg`,{className:`invite-platform-icon`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:[(0,b.jsx)(`rect`,{x:`1`,y:`4.5`,width:`10.5`,height:`9`,rx:`1.5`,stroke:`currentColor`,strokeWidth:`1.2`}),(0,b.jsx)(`path`,{d:`M11.5 7.5L17 5v8l-5.5-2.5V7.5z`,stroke:`currentColor`,strokeWidth:`1.2`,strokeLinejoin:`round`})]}),he=()=>(0,b.jsxs)(`svg`,{className:`invite-platform-icon`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:[(0,b.jsx)(`path`,{d:`M7.5 10.5a3.75 3.75 0 005.3.07l2.2-2.2a3.75 3.75 0 00-5.3-5.3L8.42 4.34`,stroke:`currentColor`,strokeWidth:`1.2`,strokeLinecap:`round`}),(0,b.jsx)(`path`,{d:`M10.5 7.5a3.75 3.75 0 00-5.3-.07L3 9.63a3.75 3.75 0 005.3 5.3l1.26-1.27`,stroke:`currentColor`,strokeWidth:`1.2`,strokeLinecap:`round`})]}),ge=()=>{let e=w();return(0,b.jsxs)(S,{id:`inside`,dark:!0,className:`section-custom-pb`,children:[(0,b.jsx)(`style`,{children:D}),(0,b.jsxs)(`div`,{ref:e,children:[(0,b.jsxs)(`div`,{className:`inside-hd reveal`,children:[(0,b.jsx)(`span`,{className:`eyebrow`,children:`COMO FUNCIONA`}),(0,b.jsx)(`h2`,{children:`O que acontece por dentro`})]}),(0,b.jsx)(`div`,{className:`inside-invite-wrap`,children:(0,b.jsx)(`div`,{className:`reveal reveal-delay-1`,children:(0,b.jsxs)(`div`,{className:`inside-invite`,children:[(0,b.jsxs)(`span`,{className:`invite-live`,children:[(0,b.jsx)(`span`,{className:`invite-live-dot`,"aria-hidden":`true`}),`Ao vivo`]}),(0,b.jsx)(`p`,{className:`invite-days`,children:`Terça a Sexta`}),(0,b.jsx)(`p`,{className:`invite-time`,children:`19h`}),(0,b.jsx)(`p`,{className:`invite-timezone`,children:`Horário de Brasília`}),(0,b.jsx)(`div`,{className:`invite-rule`,"aria-hidden":`true`}),(0,b.jsxs)(`div`,{className:`invite-platform`,children:[(0,b.jsx)(O,{}),(0,b.jsx)(`span`,{className:`invite-platform-text`,children:`Via Zoom`})]}),(0,b.jsxs)(`div`,{className:`invite-platform`,children:[(0,b.jsx)(he,{}),(0,b.jsx)(`span`,{className:`invite-platform-text`,children:`Link enviado ao e-mail após inscrição`})]}),(0,b.jsx)(`p`,{className:`invite-note`,children:`33 sessões · 33 contratos · Uma linhagem nova`})]})})})]})]})},_e=`
   .audience-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1173,7 +1307,7 @@ Error generating stack: `+e.message+`
       grid-template-columns: 1fr;
     }
   }
-`,ge=()=>(0,b.jsx)(`svg`,{className:`aud-icon-yes`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:(0,b.jsx)(`path`,{d:`M3 9.5L7 13.5L15 5`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`,strokeLinejoin:`round`})}),_e=()=>(0,b.jsx)(`svg`,{className:`aud-icon-no`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:(0,b.jsx)(`path`,{d:`M4.5 4.5L13.5 13.5M13.5 4.5L4.5 13.5`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`})}),ve=[`Para quem já fez mil cursos e nada mudou.`,`Para quem sente um véu, um peso, um teto entre ela e a riqueza que sente que é dela.`,`Para quem entende de energia, de terapia, de processos, mas não consegue romper o teto financeiro.`,`Para quem tem pavor de ser e parecer "grandiosa" e ser chamada de metida, de gananciosa.`,`Para quem sabe, lá no fundo, que o problema está muito além do que qualquer estratégia financeira alcançou.`,`Para quem decidiu que pode fazer muito mais dinheiro do que já faz hoje.`,`Para quem já fez terapia, mentoria, curso de mindset, processo de cura, e quer agora algo que expanda capacidade, não apenas revise feridas.`],ye=[`Se você quer que alguém passe a mão na sua cabeça e diga que o mundo é injusto com você.`,`Se você veio buscar validação para a sua luta e seu sacrifício.`,`Se você não está disposta a questionar tudo que acredita sobre dinheiro, merecimento e quem você decidiu ser.`,`Se você quer receitas prontas sem a disposição de eliminar o que não funciona.`],be=()=>{let e=w();return(0,b.jsxs)(S,{id:`audience`,children:[(0,b.jsx)(`style`,{children:he}),(0,b.jsxs)(`div`,{className:`audience-grid`,ref:e,children:[(0,b.jsx)(`div`,{className:`reveal`,children:(0,b.jsxs)(se,{children:[(0,b.jsx)(`h3`,{className:`audience-card`,children:`Para quem é isso`}),(0,b.jsxs)(`ul`,{className:`audience-list`,children:[ve.map((e,t)=>(0,b.jsxs)(`li`,{children:[(0,b.jsx)(ge,{}),(0,b.jsx)(`span`,{children:e})]},t)),(0,b.jsxs)(`li`,{children:[(0,b.jsx)(ge,{}),(0,b.jsx)(`span`,{children:(0,b.jsx)(`strong`,{children:`Para quem está disposta a operar 33 dias dentro de uma prática estruturada, sem pular etapa.`})})]})]})]})}),(0,b.jsx)(`div`,{className:`reveal reveal-delay-1`,children:(0,b.jsxs)(se,{className:`audience-no-card`,children:[(0,b.jsx)(`h3`,{className:`audience-card`,children:`Para quem não é`}),(0,b.jsx)(`ul`,{className:`audience-list`,children:ye.map((e,t)=>(0,b.jsxs)(`li`,{children:[(0,b.jsx)(_e,{}),(0,b.jsx)(`span`,{children:e})]},t))}),(0,b.jsx)(`p`,{className:`no-summary`,children:`Esse protocolo é para quem está disposta a ser a ovelha colorida rica da família. Mesmo que todo mundo chame isso de loucura.`})]})})]})]})},xe=`/`,Se=`
+`,ve=()=>(0,b.jsx)(`svg`,{className:`aud-icon-yes`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:(0,b.jsx)(`path`,{d:`M3 9.5L7 13.5L15 5`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`,strokeLinejoin:`round`})}),ye=()=>(0,b.jsx)(`svg`,{className:`aud-icon-no`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:(0,b.jsx)(`path`,{d:`M4.5 4.5L13.5 13.5M13.5 4.5L4.5 13.5`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`})}),be=[`Para quem já fez mil cursos e nada mudou.`,`Para quem sente um véu, um peso, um teto entre ela e a riqueza que sente que é dela.`,`Para quem entende de energia, de terapia, de processos, mas não consegue romper o teto financeiro.`,`Para quem tem pavor de ser e parecer "grandiosa" e ser chamada de metida, de gananciosa.`,`Para quem sabe, lá no fundo, que o problema está muito além do que qualquer estratégia financeira alcançou.`,`Para quem decidiu que pode fazer muito mais dinheiro do que já faz hoje.`,`Para quem já fez terapia, mentoria, curso de mindset, processo de cura, e quer agora algo que expanda capacidade, não apenas revise feridas.`],xe=[`Se você quer que alguém passe a mão na sua cabeça e diga que o mundo é injusto com você.`,`Se você veio buscar validação para a sua luta e seu sacrifício.`,`Se você não está disposta a questionar tudo que acredita sobre dinheiro, merecimento e quem você decidiu ser.`,`Se você quer receitas prontas sem a disposição de eliminar o que não funciona.`],Se=()=>{let e=w();return(0,b.jsxs)(S,{id:`audience`,children:[(0,b.jsx)(`style`,{children:_e}),(0,b.jsxs)(`div`,{className:`audience-grid`,ref:e,children:[(0,b.jsx)(`div`,{className:`reveal`,children:(0,b.jsxs)(se,{children:[(0,b.jsx)(`h3`,{className:`audience-card`,children:`Para quem é isso`}),(0,b.jsxs)(`ul`,{className:`audience-list`,children:[be.map((e,t)=>(0,b.jsxs)(`li`,{children:[(0,b.jsx)(ve,{}),(0,b.jsx)(`span`,{children:e})]},t)),(0,b.jsxs)(`li`,{children:[(0,b.jsx)(ve,{}),(0,b.jsx)(`span`,{children:(0,b.jsx)(`strong`,{children:`Para quem está disposta a operar 33 dias dentro de uma prática estruturada, sem pular etapa.`})})]})]})]})}),(0,b.jsx)(`div`,{className:`reveal reveal-delay-1`,children:(0,b.jsxs)(se,{className:`audience-no-card`,children:[(0,b.jsx)(`h3`,{className:`audience-card`,children:`Para quem não é`}),(0,b.jsx)(`ul`,{className:`audience-list`,children:xe.map((e,t)=>(0,b.jsxs)(`li`,{children:[(0,b.jsx)(ye,{}),(0,b.jsx)(`span`,{children:e})]},t))}),(0,b.jsx)(`p`,{className:`no-summary`,children:`Esse protocolo é para quem está disposta a ser a ovelha colorida rica da família. Mesmo que todo mundo chame isso de loucura.`})]})})]})]})},Ce=`/`,we=`
   .mentor-wrap {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
@@ -1251,7 +1385,7 @@ Error generating stack: `+e.message+`
       text-align: center;
     }
   }
-`,Ce=()=>{let e=w();return(0,b.jsxs)(S,{id:`mentor`,dark:!0,children:[(0,b.jsx)(`style`,{children:Se}),(0,b.jsxs)(`div`,{className:`mentor-wrap`,ref:e,children:[(0,b.jsx)(`div`,{className:`mentor-image-container reveal`,children:(0,b.jsx)(`div`,{className:`mentor-image-wrapper`,children:(0,b.jsx)(`img`,{src:`${xe}images/foto-quem-sou-final.webp`,alt:`Sua Mentora`,loading:`lazy`})})}),(0,b.jsxs)(`div`,{className:`mentor-content reveal reveal-delay-1`,children:[(0,b.jsx)(`h2`,{className:`mentor-title`,children:`Quem é sua Mentora`}),(0,b.jsx)(`div`,{className:`mentor-highlight`,children:`Fundadora da Escola Missão Consciência® e especialista em Mentalidade de Alta Permissão.`}),(0,b.jsx)(`p`,{className:`mentor-p`,children:`Com mais de 10 anos de experiência terapêutica, já soma mais de 150 mil mulheres impactadas pelo seu trabalho, ela não entrega apenas "teoria", mas as chaves práticas para você assumir o controle do seu sistema nervoso.`})]})]})]})},we=`/`,Te=`
+`,Te=()=>{let e=w();return(0,b.jsxs)(S,{id:`mentor`,dark:!0,children:[(0,b.jsx)(`style`,{children:we}),(0,b.jsxs)(`div`,{className:`mentor-wrap`,ref:e,children:[(0,b.jsx)(`div`,{className:`mentor-image-container reveal`,children:(0,b.jsx)(`div`,{className:`mentor-image-wrapper`,children:(0,b.jsx)(`img`,{src:`${Ce}images/foto-quem-sou-final.webp`,alt:`Sua Mentora`,loading:`lazy`})})}),(0,b.jsxs)(`div`,{className:`mentor-content reveal reveal-delay-1`,children:[(0,b.jsx)(`h2`,{className:`mentor-title`,children:`Quem é sua Mentora`}),(0,b.jsx)(`div`,{className:`mentor-highlight`,children:`Fundadora da Escola Missão Consciência® e especialista em Mentalidade de Alta Permissão.`}),(0,b.jsx)(`p`,{className:`mentor-p`,children:`Com mais de 10 anos de experiência terapêutica, já soma mais de 150 mil mulheres impactadas pelo seu trabalho, ela não entrega apenas "teoria", mas as chaves práticas para você assumir o controle do seu sistema nervoso.`})]})]})]})},Ee=`/`,De=`
   .testimonials-wrap {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -1325,7 +1459,7 @@ Error generating stack: `+e.message+`
       grid-template-columns: 1fr;
     }
   }
-`,Ee=Array.from({length:11},(e,t)=>`${we}images/depoimento${t}.webp`),De=Math.ceil(Ee.length/4),Oe=[Ee.slice(0,De),Ee.slice(De,De*2),Ee.slice(De*2,De*3),Ee.slice(De*3,Ee.length)],ke=()=>{let e=w();return(0,b.jsxs)(S,{id:`depoimentos`,dark:!0,children:[(0,b.jsx)(`style`,{children:Te}),(0,b.jsxs)(`div`,{className:`testimonials-wrap`,ref:e,children:[(0,b.jsxs)(`div`,{className:`testimonials-header reveal`,children:[(0,b.jsx)(`h2`,{children:`O que elas dizem`}),(0,b.jsx)(`p`,{children:`Milhares de mulheres já vivenciaram a transformação dessa nova consciência. Veja o que acontece quando você decide rasgar os contratos da escassez.`})]}),(0,b.jsx)(`div`,{className:`testimonials-grid`,children:Oe.map((e,t)=>(0,b.jsx)(`div`,{className:`testimonials-column`,children:e.map((e,n)=>(0,b.jsx)(`div`,{className:`testimonial-img-wrapper reveal reveal-delay-${(n+t)%3+1}`,children:(0,b.jsx)(`img`,{src:e,alt:`Depoimento ${n+1}`,loading:`lazy`})},n))},t))})]})]})},Ae=`
+`,Oe=Array.from({length:11},(e,t)=>`${Ee}images/depoimento${t}.webp`),ke=Math.ceil(Oe.length/4),Ae=[Oe.slice(0,ke),Oe.slice(ke,ke*2),Oe.slice(ke*2,ke*3),Oe.slice(ke*3,Oe.length)],je=()=>{let e=w();return(0,b.jsxs)(S,{id:`depoimentos`,dark:!0,children:[(0,b.jsx)(`style`,{children:De}),(0,b.jsxs)(`div`,{className:`testimonials-wrap`,ref:e,children:[(0,b.jsxs)(`div`,{className:`testimonials-header reveal`,children:[(0,b.jsx)(`h2`,{children:`O que elas dizem`}),(0,b.jsx)(`p`,{children:`Milhares de mulheres já vivenciaram a transformação dessa nova consciência. Veja o que acontece quando você decide rasgar os contratos da escassez.`})]}),(0,b.jsx)(`div`,{className:`testimonials-grid`,children:Ae.map((e,t)=>(0,b.jsx)(`div`,{className:`testimonials-column`,children:e.map((e,n)=>(0,b.jsx)(`div`,{className:`testimonial-img-wrapper reveal reveal-delay-${(n+t)%3+1}`,children:(0,b.jsx)(`img`,{src:e,alt:`Depoimento ${n+1}`,loading:`lazy`})},n))},t))})]})]})},Me=`
   .p33-accordion {
     border-top: 1px solid var(--line);
   }
@@ -1401,7 +1535,7 @@ Error generating stack: `+e.message+`
   .p33-acc-inner {
     padding-bottom: 28px;
   }
-`,je=({title:e,children:t,isOpen:n,onClick:r})=>(0,b.jsxs)(`div`,{className:`p33-acc-item`,children:[(0,b.jsxs)(`button`,{className:`p33-acc-trigger`,onClick:r,"aria-expanded":n,children:[(0,b.jsx)(`span`,{className:`p33-acc-title${n?` is-open`:``}`,children:e}),(0,b.jsxs)(`svg`,{className:`p33-acc-icon${n?` is-open`:``}`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:[(0,b.jsx)(`line`,{x1:`9`,y1:`1`,x2:`9`,y2:`17`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`}),(0,b.jsx)(`line`,{x1:`1`,y1:`9`,x2:`17`,y2:`9`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`})]})]}),(0,b.jsx)(`div`,{className:`p33-acc-body${n?` is-open`:``}`,children:(0,b.jsx)(`div`,{className:`p33-acc-inner`,children:t})})]}),Me=({items:e})=>{let[t,n]=(0,_.useState)(null);return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsx)(`style`,{children:Ae}),(0,b.jsx)(`div`,{className:`p33-accordion`,children:e.map((e,r)=>(0,b.jsx)(je,{title:e.title,isOpen:t===r,onClick:()=>n(t===r?null:r),children:e.content},r))})]})},Ne=`
+`,Ne=({title:e,children:t,isOpen:n,onClick:r})=>(0,b.jsxs)(`div`,{className:`p33-acc-item`,children:[(0,b.jsxs)(`button`,{className:`p33-acc-trigger`,onClick:r,"aria-expanded":n,children:[(0,b.jsx)(`span`,{className:`p33-acc-title${n?` is-open`:``}`,children:e}),(0,b.jsxs)(`svg`,{className:`p33-acc-icon${n?` is-open`:``}`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:[(0,b.jsx)(`line`,{x1:`9`,y1:`1`,x2:`9`,y2:`17`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`}),(0,b.jsx)(`line`,{x1:`1`,y1:`9`,x2:`17`,y2:`9`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`})]})]}),(0,b.jsx)(`div`,{className:`p33-acc-body${n?` is-open`:``}`,children:(0,b.jsx)(`div`,{className:`p33-acc-inner`,children:t})})]}),Pe=({items:e})=>{let[t,n]=(0,_.useState)(null);return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsx)(`style`,{children:Me}),(0,b.jsx)(`div`,{className:`p33-accordion`,children:e.map((e,r)=>(0,b.jsx)(Ne,{title:e.title,isOpen:t===r,onClick:()=>n(t===r?null:r),children:e.content},r))})]})},Fe=`
   .offer-wrap {
     max-width: 100%;
     margin: 0 auto;
@@ -1550,7 +1684,7 @@ Error generating stack: `+e.message+`
   @media (max-width: 480px) {
     .price-frame { padding: 1.5rem 2rem; }
   }
-`,Pe=[{title:`"Mas eu já fiz tantos cursos…"`,content:(0,b.jsx)(`p`,{children:`Exatamente. E nenhum deles foi um protocolo de Destruir e Descriar contratos de linhagem. Você aprendeu sobre os padrões. O Protocolo 33 vai para onde os contratos estão guardados. Essa é a diferença.`})},{title:`"Não sei se é o momento certo…"`,content:(0,b.jsx)(`p`,{children:`O momento certo chegará junto com o dinheiro que você ainda não tem? Você está esperando condições para criar as condições. Essa é a mecânica da escassez funcionando ao vivo, na sua frente.`})},{title:`"E se eu não conseguir acompanhar os 33 dias?"`,content:(0,b.jsx)(`p`,{children:`As aulas são gravadas. Você acessa no seu ritmo. Mas olha, se você não consegue se comprometer com 10 minutos por dia durante 33 dias, o Protocolo já está fazendo o trabalho: está mostrando exatamente onde o seu não-compromisso com você mesma mora.`})},{title:`"Isso funciona de verdade?"`,content:(0,b.jsx)(`p`,{children:`Depende de uma coisa: de você. O processo funciona. A pergunta é se você vai usar de verdade ou vai mais uma vez assistir passivamente esperando que algo mude por osmose. A ferramenta é a ferramenta. A potência é sua.`})}],Fe=()=>{let e=w();return(0,b.jsxs)(S,{id:`offer`,dark:!0,children:[(0,b.jsx)(`style`,{children:Ne}),(0,b.jsxs)(`div`,{className:`offer-wrap`,ref:e,children:[(0,b.jsxs)(`div`,{className:`offer-price-block reveal`,children:[(0,b.jsx)(`span`,{className:`eyebrow`,children:`O Investimento`}),(0,b.jsx)(`div`,{className:`price-frame`,children:(0,b.jsxs)(`div`,{className:`price-inner`,children:[(0,b.jsx)(`span`,{className:`price-display`,children:`R$ 333`}),(0,b.jsx)(`span`,{className:`price-label`,children:`O número da criação. O número da prontidão.`})]})}),(0,b.jsxs)(`div`,{className:`offer-rational`,children:[(0,b.jsx)(`p`,{children:(0,b.jsx)(`strong`,{children:`Deixa eu ser direta com você.`})}),(0,b.jsxs)(`p`,{children:[`R$ 333 divididos por 33 dias são `,(0,b.jsx)(`strong`,{children:`R$ 10,09 por dia`}),`. Menos do que um delivery de fim de semana. Menos do que uma sessão de terapia. Muito menos do que o custo de mais um ano vivendo exatamente onde você está agora.`]}),(0,b.jsx)(`p`,{className:`offer-strong-stmt`,children:`Se você não está disposta a colocar R$ 10 por dia na sua própria potência, o Protocolo 33 já te deu a primeira lição de graça: Você ainda acha que a sua escassez é mais segura do que a sua expansão.`})]}),(0,b.jsxs)(`div`,{className:`offer-cta`,children:[(0,b.jsx)(C,{href:`https://pay.hotmart.com/G105503561S?off=96dhtv1b`,target:`_blank`,rel:`noopener noreferrer`,style:{fontSize:`0.8125rem`,padding:`20px 52px`},children:`INICIAR OS 33 PROTOCOLOS`}),(0,b.jsx)(`p`,{className:`offer-cta-sub`,children:`33 dias · 33 contratos · Uma nova linhagem`})]})]}),(0,b.jsx)(le,{type:`ornament`}),(0,b.jsxs)(`div`,{className:`objections-wrap reveal reveal-delay-1`,children:[(0,b.jsx)(`h3`,{children:`Ainda na dúvida?`}),(0,b.jsx)(Me,{items:Pe})]})]})]})},Ie=(...e)=>e.filter((e,t,n)=>!!e&&e.trim()!==``&&n.indexOf(e)===t).join(` `).trim(),Le=e=>e.replace(/([a-z0-9])([A-Z])/g,`$1-$2`).toLowerCase(),Re=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(e,t,n)=>n?n.toUpperCase():t.toLowerCase()),ze=e=>{let t=Re(e);return t.charAt(0).toUpperCase()+t.slice(1)},Be={xmlns:`http://www.w3.org/2000/svg`,width:24,height:24,viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:2,strokeLinecap:`round`,strokeLinejoin:`round`},Ve=e=>{for(let t in e)if(t.startsWith(`aria-`)||t===`role`||t===`title`)return!0;return!1},He=(0,_.createContext)({}),Ue=()=>(0,_.useContext)(He),We=(0,_.forwardRef)(({color:e,size:t,strokeWidth:n,absoluteStrokeWidth:r,className:i=``,children:a,iconNode:o,...s},c)=>{let{size:l=24,strokeWidth:u=2,absoluteStrokeWidth:d=!1,color:f=`currentColor`,className:p=``}=Ue()??{},m=r??d?Number(n??u)*24/Number(t??l):n??u;return(0,_.createElement)(`svg`,{ref:c,...Be,width:t??l??Be.width,height:t??l??Be.height,stroke:e??f,strokeWidth:m,className:Ie(`lucide`,p,i),...!a&&!Ve(s)&&{"aria-hidden":`true`},...s},[...o.map(([e,t])=>(0,_.createElement)(e,t)),...Array.isArray(a)?a:[a]])}),Ge=(e,t)=>{let n=(0,_.forwardRef)(({className:n,...r},i)=>(0,_.createElement)(We,{ref:i,iconNode:t,className:Ie(`lucide-${Le(ze(e))}`,`lucide-${e}`,n),...r}));return n.displayName=ze(e),n},Ke=Ge(`file-x`,[[`path`,{d:`M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z`,key:`1oefj6`}],[`path`,{d:`M14 2v5a1 1 0 0 0 1 1h5`,key:`wfsgrz`}],[`path`,{d:`m14.5 12.5-5 5`,key:`b62r18`}],[`path`,{d:`m9.5 12.5 5 5`,key:`1rk7el`}]]),qe=Ge(`gem`,[[`path`,{d:`M10.5 3 8 9l4 13 4-13-2.5-6`,key:`b3dvk1`}],[`path`,{d:`M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z`,key:`7w4byz`}],[`path`,{d:`M2 9h20`,key:`16fsjt`}]]),Je=Ge(`smartphone`,[[`rect`,{width:`14`,height:`20`,x:`5`,y:`2`,rx:`2`,ry:`2`,key:`1yt0o3`}],[`path`,{d:`M12 18h.01`,key:`mhygvu`}]]),Ye=Ge(`sparkles`,[[`path`,{d:`M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z`,key:`1s2grr`}],[`path`,{d:`M20 2v4`,key:`1rf3ol`}],[`path`,{d:`M22 4h-4`,key:`gwowj6`}],[`circle`,{cx:`4`,cy:`20`,r:`2`,key:`6kqj1y`}]]),Xe=`/`,Ze=`
+`,Ie=[{title:`"Mas eu já fiz tantos cursos…"`,content:(0,b.jsx)(`p`,{children:`Exatamente. E nenhum deles foi um protocolo de Destruir e Descriar contratos de linhagem. Você aprendeu sobre os padrões. O Protocolo 33 vai para onde os contratos estão guardados. Essa é a diferença.`})},{title:`"Não sei se é o momento certo…"`,content:(0,b.jsx)(`p`,{children:`O momento certo chegará junto com o dinheiro que você ainda não tem? Você está esperando condições para criar as condições. Essa é a mecânica da escassez funcionando ao vivo, na sua frente.`})},{title:`"E se eu não conseguir acompanhar os 33 dias?"`,content:(0,b.jsx)(`p`,{children:`As aulas são gravadas. Você acessa no seu ritmo. Mas olha, se você não consegue se comprometer com 10 minutos por dia durante 33 dias, o Protocolo já está fazendo o trabalho: está mostrando exatamente onde o seu não-compromisso com você mesma mora.`})},{title:`"Isso funciona de verdade?"`,content:(0,b.jsx)(`p`,{children:`Depende de uma coisa: de você. O processo funciona. A pergunta é se você vai usar de verdade ou vai mais uma vez assistir passivamente esperando que algo mude por osmose. A ferramenta é a ferramenta. A potência é sua.`})}],Le=()=>{let e=w();return(0,b.jsxs)(S,{id:`offer`,dark:!0,children:[(0,b.jsx)(`style`,{children:Fe}),(0,b.jsxs)(`div`,{className:`offer-wrap`,ref:e,children:[(0,b.jsxs)(`div`,{className:`offer-price-block reveal`,children:[(0,b.jsx)(`span`,{className:`eyebrow`,children:`O Investimento`}),(0,b.jsx)(`div`,{className:`price-frame`,children:(0,b.jsxs)(`div`,{className:`price-inner`,children:[(0,b.jsx)(`span`,{className:`price-display`,children:`R$ 333`}),(0,b.jsx)(`span`,{className:`price-label`,children:`O número da criação. O número da prontidão.`})]})}),(0,b.jsxs)(`div`,{className:`offer-rational`,children:[(0,b.jsx)(`p`,{children:(0,b.jsx)(`strong`,{children:`Deixa eu ser direta com você.`})}),(0,b.jsxs)(`p`,{children:[`R$ 333 divididos por 33 dias são `,(0,b.jsx)(`strong`,{children:`R$ 10,09 por dia`}),`. Menos do que um delivery de fim de semana. Menos do que uma sessão de terapia. Muito menos do que o custo de mais um ano vivendo exatamente onde você está agora.`]}),(0,b.jsx)(`p`,{className:`offer-strong-stmt`,children:`Se você não está disposta a colocar R$ 10 por dia na sua própria potência, o Protocolo 33 já te deu a primeira lição de graça: Você ainda acha que a sua escassez é mais segura do que a sua expansão.`})]}),(0,b.jsxs)(`div`,{className:`offer-cta`,children:[(0,b.jsx)(C,{href:`https://pay.hotmart.com/G105503561S?off=96dhtv1b`,target:`_blank`,rel:`noopener noreferrer`,style:{fontSize:`0.8125rem`,padding:`20px 52px`},children:`INICIAR OS 33 PROTOCOLOS`}),(0,b.jsx)(`p`,{className:`offer-cta-sub`,children:`33 dias · 33 contratos · Uma nova linhagem`})]})]}),(0,b.jsx)(le,{type:`ornament`}),(0,b.jsxs)(`div`,{className:`objections-wrap reveal reveal-delay-1`,children:[(0,b.jsx)(`h3`,{children:`Ainda na dúvida?`}),(0,b.jsx)(Pe,{items:Ie})]})]})]})},Re=(...e)=>e.filter((e,t,n)=>!!e&&e.trim()!==``&&n.indexOf(e)===t).join(` `).trim(),ze=e=>e.replace(/([a-z0-9])([A-Z])/g,`$1-$2`).toLowerCase(),Be=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(e,t,n)=>n?n.toUpperCase():t.toLowerCase()),Ve=e=>{let t=Be(e);return t.charAt(0).toUpperCase()+t.slice(1)},He={xmlns:`http://www.w3.org/2000/svg`,width:24,height:24,viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:2,strokeLinecap:`round`,strokeLinejoin:`round`},Ue=e=>{for(let t in e)if(t.startsWith(`aria-`)||t===`role`||t===`title`)return!0;return!1},We=(0,_.createContext)({}),Ge=()=>(0,_.useContext)(We),Ke=(0,_.forwardRef)(({color:e,size:t,strokeWidth:n,absoluteStrokeWidth:r,className:i=``,children:a,iconNode:o,...s},c)=>{let{size:l=24,strokeWidth:u=2,absoluteStrokeWidth:d=!1,color:f=`currentColor`,className:p=``}=Ge()??{},m=r??d?Number(n??u)*24/Number(t??l):n??u;return(0,_.createElement)(`svg`,{ref:c,...He,width:t??l??He.width,height:t??l??He.height,stroke:e??f,strokeWidth:m,className:Re(`lucide`,p,i),...!a&&!Ue(s)&&{"aria-hidden":`true`},...s},[...o.map(([e,t])=>(0,_.createElement)(e,t)),...Array.isArray(a)?a:[a]])}),qe=(e,t)=>{let n=(0,_.forwardRef)(({className:n,...r},i)=>(0,_.createElement)(Ke,{ref:i,iconNode:t,className:Re(`lucide-${ze(Ve(e))}`,`lucide-${e}`,n),...r}));return n.displayName=Ve(e),n},Je=qe(`file-x`,[[`path`,{d:`M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z`,key:`1oefj6`}],[`path`,{d:`M14 2v5a1 1 0 0 0 1 1h5`,key:`wfsgrz`}],[`path`,{d:`m14.5 12.5-5 5`,key:`b62r18`}],[`path`,{d:`m9.5 12.5 5 5`,key:`1rk7el`}]]),Ye=qe(`gem`,[[`path`,{d:`M10.5 3 8 9l4 13 4-13-2.5-6`,key:`b3dvk1`}],[`path`,{d:`M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z`,key:`7w4byz`}],[`path`,{d:`M2 9h20`,key:`16fsjt`}]]),Xe=qe(`smartphone`,[[`rect`,{width:`14`,height:`20`,x:`5`,y:`2`,rx:`2`,ry:`2`,key:`1yt0o3`}],[`path`,{d:`M12 18h.01`,key:`mhygvu`}]]),Ze=qe(`sparkles`,[[`path`,{d:`M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z`,key:`1s2grr`}],[`path`,{d:`M20 2v4`,key:`1rf3ol`}],[`path`,{d:`M22 4h-4`,key:`gwowj6`}],[`circle`,{cx:`4`,cy:`20`,r:`2`,key:`6kqj1y`}]]),Qe=`/`,$e=`
   .vision-wrap {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -1635,7 +1769,7 @@ Error generating stack: `+e.message+`
     }
   }
 
-`,Qe=`
+`,et=`
   .footer-area {
     background-color: var(--bg-soft);
     border-top: 1px solid var(--line);
@@ -1671,4 +1805,4 @@ Error generating stack: `+e.message+`
   @media (max-width: 480px) {
     .footer-area { padding: 4rem 18px 2rem; }
   }
-`,$e=()=>{let e=w(),t=w();return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsxs)(S,{id:`vision`,children:[(0,b.jsx)(`style`,{children:Ze}),(0,b.jsxs)(`div`,{className:`vision-wrap`,ref:e,children:[(0,b.jsx)(`div`,{className:`vision-header reveal`,children:(0,b.jsx)(`h2`,{children:`Daqui a 33 dias você não vai ter "aprendido mais uma coisa."`})}),(0,b.jsxs)(`div`,{className:`vision-cards reveal reveal-delay-1`,children:[(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Ke,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai ter revogado os contratos que decidiam, sem te pedir licença, quanto de dinheiro era permitido para alguém como você.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Je,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai olhar para o aplicativo do banco sem aquele aperto no estômago.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(qe,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai cobrar pelo que vale sem dar descontos que ninguém pediu.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Ye,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai receber sem minimizar. Vai gastar com alegria sem culpa. Vai ser a pessoa que chegou.`})]})]}),(0,b.jsxs)(`div`,{className:`vision-conclusion reveal reveal-delay-2`,children:[(0,b.jsx)(`p`,{children:`E quando a sua família te chamar de "mudou com o dinheiro", você vai sorrir.`}),(0,b.jsx)(`p`,{className:`vision-hl`,children:`Porque significa que funcionou.`})]})]})]}),(0,b.jsxs)(`footer`,{className:`footer-area`,ref:t,children:[(0,b.jsx)(`style`,{children:Qe}),(0,b.jsx)(`div`,{className:`footer-logo-wrap`,children:(0,b.jsx)(`img`,{src:`${Xe}images/miscon-logo.webp`,alt:`Missão Consciência`,loading:`lazy`})}),(0,b.jsx)(`div`,{className:`footer-bottom`,children:(0,b.jsxs)(`p`,{children:[`© `,new Date().getFullYear(),` Protocolo 33 · Todos os direitos reservados.`]})})]})]})};function et(){return(0,_.useEffect)(()=>{document.querySelectorAll(`a[href^="#"]`).forEach(e=>{e.addEventListener(`click`,function(e){if(this.getAttribute(`href`)!==`#checkout`){e.preventDefault();let t=document.querySelector(this.getAttribute(`href`));t&&t.scrollIntoView({behavior:`smooth`})}})})},[]),(0,b.jsxs)(`div`,{className:`protocolo-33-app`,children:[(0,b.jsx)(re,{}),(0,b.jsx)(ae,{}),(0,b.jsx)(E,{}),(0,b.jsx)(me,{}),(0,b.jsx)(O,{}),(0,b.jsx)(be,{}),(0,b.jsx)(Ce,{}),(0,b.jsx)(ke,{}),(0,b.jsx)(Fe,{}),(0,b.jsx)($e,{})]})}(0,v.createRoot)(document.getElementById(`root`)).render((0,b.jsx)(_.StrictMode,{children:(0,b.jsx)(et,{})}));
+`,tt=()=>{let e=w(),t=w();return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsxs)(S,{id:`vision`,children:[(0,b.jsx)(`style`,{children:$e}),(0,b.jsxs)(`div`,{className:`vision-wrap`,ref:e,children:[(0,b.jsx)(`div`,{className:`vision-header reveal`,children:(0,b.jsx)(`h2`,{children:`Daqui a 33 dias você não vai ter "aprendido mais uma coisa."`})}),(0,b.jsxs)(`div`,{className:`vision-cards reveal reveal-delay-1`,children:[(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Je,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai ter revogado os contratos que decidiam, sem te pedir licença, quanto de dinheiro era permitido para alguém como você.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Xe,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai olhar para o aplicativo do banco sem aquele aperto no estômago.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Ye,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai cobrar pelo que vale sem dar descontos que ninguém pediu.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Ze,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai receber sem minimizar. Vai gastar com alegria sem culpa. Vai ser a pessoa que chegou.`})]})]}),(0,b.jsxs)(`div`,{className:`vision-conclusion reveal reveal-delay-2`,children:[(0,b.jsx)(`p`,{children:`E quando a sua família te chamar de "mudou com o dinheiro", você vai sorrir.`}),(0,b.jsx)(`p`,{className:`vision-hl`,children:`Porque significa que funcionou.`})]})]})]}),(0,b.jsxs)(`footer`,{className:`footer-area`,ref:t,children:[(0,b.jsx)(`style`,{children:et}),(0,b.jsx)(`div`,{className:`footer-logo-wrap`,children:(0,b.jsx)(`img`,{src:`${Qe}images/miscon-logo.webp`,alt:`Missão Consciência`,loading:`lazy`})}),(0,b.jsx)(`div`,{className:`footer-bottom`,children:(0,b.jsxs)(`p`,{children:[`© `,new Date().getFullYear(),` Protocolo 33 · Todos os direitos reservados.`]})})]})]})};function nt(){return(0,_.useEffect)(()=>{document.querySelectorAll(`a[href^="#"]`).forEach(e=>{e.addEventListener(`click`,function(e){if(this.getAttribute(`href`)!==`#checkout`){e.preventDefault();let t=document.querySelector(this.getAttribute(`href`));t&&t.scrollIntoView({behavior:`smooth`})}})})},[]),(0,b.jsxs)(`div`,{className:`protocolo-33-app`,children:[(0,b.jsx)(re,{}),(0,b.jsx)(ae,{}),(0,b.jsx)(E,{}),(0,b.jsx)(me,{}),(0,b.jsx)(ge,{}),(0,b.jsx)(Se,{}),(0,b.jsx)(Te,{}),(0,b.jsx)(je,{}),(0,b.jsx)(Le,{}),(0,b.jsx)(tt,{})]})}(0,v.createRoot)(document.getElementById(`root`)).render((0,b.jsx)(_.StrictMode,{children:(0,b.jsx)(nt,{})}));
