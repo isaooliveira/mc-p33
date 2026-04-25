@@ -1535,96 +1535,295 @@ Error generating stack: `+e.message+`
   .p33-acc-inner {
     padding-bottom: 28px;
   }
-`,Ne=({title:e,children:t,isOpen:n,onClick:r})=>(0,b.jsxs)(`div`,{className:`p33-acc-item`,children:[(0,b.jsxs)(`button`,{className:`p33-acc-trigger`,onClick:r,"aria-expanded":n,children:[(0,b.jsx)(`span`,{className:`p33-acc-title${n?` is-open`:``}`,children:e}),(0,b.jsxs)(`svg`,{className:`p33-acc-icon${n?` is-open`:``}`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:[(0,b.jsx)(`line`,{x1:`9`,y1:`1`,x2:`9`,y2:`17`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`}),(0,b.jsx)(`line`,{x1:`1`,y1:`9`,x2:`17`,y2:`9`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`})]})]}),(0,b.jsx)(`div`,{className:`p33-acc-body${n?` is-open`:``}`,children:(0,b.jsx)(`div`,{className:`p33-acc-inner`,children:t})})]}),Pe=({items:e})=>{let[t,n]=(0,_.useState)(null);return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsx)(`style`,{children:Me}),(0,b.jsx)(`div`,{className:`p33-accordion`,children:e.map((e,r)=>(0,b.jsx)(Ne,{title:e.title,isOpen:t===r,onClick:()=>n(t===r?null:r),children:e.content},r))})]})},Fe=`
+`,Ne=({title:e,children:t,isOpen:n,onClick:r})=>(0,b.jsxs)(`div`,{className:`p33-acc-item`,children:[(0,b.jsxs)(`button`,{className:`p33-acc-trigger`,onClick:r,"aria-expanded":n,children:[(0,b.jsx)(`span`,{className:`p33-acc-title${n?` is-open`:``}`,children:e}),(0,b.jsxs)(`svg`,{className:`p33-acc-icon${n?` is-open`:``}`,viewBox:`0 0 18 18`,fill:`none`,"aria-hidden":`true`,children:[(0,b.jsx)(`line`,{x1:`9`,y1:`1`,x2:`9`,y2:`17`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`}),(0,b.jsx)(`line`,{x1:`1`,y1:`9`,x2:`17`,y2:`9`,stroke:`currentColor`,strokeWidth:`1.4`,strokeLinecap:`round`})]})]}),(0,b.jsx)(`div`,{className:`p33-acc-body${n?` is-open`:``}`,children:(0,b.jsx)(`div`,{className:`p33-acc-inner`,children:t})})]}),Pe=({items:e})=>{let[t,n]=(0,_.useState)(null);return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsx)(`style`,{children:Me}),(0,b.jsx)(`div`,{className:`p33-accordion`,children:e.map((e,r)=>(0,b.jsx)(Ne,{title:e.title,isOpen:t===r,onClick:()=>n(t===r?null:r),children:e.content},r))})]})},Fe=new Date(`2026-05-04T00:00:00-03:00`),Ie=new Date(`2026-05-06T23:59:59-03:00`),Le=new Date(`2026-05-12T23:59:59-03:00`),Re=new Date(`2026-05-13T00:00:00-03:00`);function ze(e){return e<Ie?1:e<Re?2:3}function Be(e){return e===1?Ie:e===2?Le:null}function Ve(e){if(!e)return null;let t=e-Date.now();if(t<=0)return{days:`00`,hours:`00`,min:`00`,sec:`00`};let n=Math.floor(t/1e3);return{days:String(Math.floor(n/86400)).padStart(2,`0`),hours:String(Math.floor(n%86400/3600)).padStart(2,`0`),min:String(Math.floor(n%3600/60)).padStart(2,`0`),sec:String(n%60).padStart(2,`0`)}}var He=()=>(0,b.jsxs)(`svg`,{width:`22`,height:`22`,viewBox:`0 0 22 22`,fill:`none`,"aria-hidden":`true`,children:[(0,b.jsx)(`rect`,{x:`4`,y:`10`,width:`14`,height:`10`,rx:`2`,stroke:`currentColor`,strokeWidth:`1.3`}),(0,b.jsx)(`path`,{d:`M7 10V7a4 4 0 018 0v3`,stroke:`currentColor`,strokeWidth:`1.3`,strokeLinecap:`round`})]}),Ue=[{number:1,label:`Lote 1`,price:`R$ 333`,sub:`O número da criação`,opensLabel:null,href:`https://pay.hotmart.com/G105503561S?off=96dhtv1b`},{number:2,label:`Lote 2`,price:`R$ 593`,sub:null,opensLabel:`Abre 07/Mai`,href:`https://pay.hotmart.com/G105503561S?off=srm3ga1c`},{number:3,label:`Lote 3`,price:`R$ 933`,sub:null,opensLabel:`Abre 13/Mai`,href:`https://pay.hotmart.com/G105503561S?off=i1yx628b`}],We=`
   .offer-wrap {
     max-width: 100%;
     margin: 0 auto;
   }
 
-  /* Price block */
-  .offer-price-block {
+  .offer-hd {
     text-align: center;
+    margin-bottom: 3rem;
   }
 
-  .offer-price-block .eyebrow {
+  .offer-hd .eyebrow {
     justify-content: center;
   }
 
-  /* Gold ornament frame around price */
-  .price-frame {
-    position: relative;
-    display: inline-block;
-    padding: 2rem 4rem;
-    margin: 1rem 0 2.5rem;
+  /* ---- Lote grid ---- */
+
+  .lotes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+    align-items: stretch;
   }
 
-  .price-frame::before,
-  .price-frame::after {
+  .lote-card {
+    position: relative;
+    border-radius: 4px;
+    padding: 2rem 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Default — locked future */
+  .lote-card.locked {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  /* Closed — past lote */
+  .lote-card.closed {
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  /* Active */
+  .lote-card.active {
+    background: linear-gradient(160deg,
+      rgba(214, 186, 122, 0.07) 0%,
+      rgba(10, 9, 14, 0.55) 100%
+    );
+    border: 1px solid rgba(214, 186, 122, 0.38);
+    box-shadow:
+      0 0 60px rgba(214, 186, 122, 0.05),
+      0 1px 0 rgba(214, 186, 122, 0.14) inset;
+  }
+
+  /* Active corner ornaments */
+  .lote-card.active::before,
+  .lote-card.active::after {
     content: '';
     position: absolute;
-    width: 28px;
-    height: 28px;
+    width: 20px;
+    height: 20px;
   }
 
-  .price-frame::before {
-    top: 0; left: 0;
-    border-top: 1px solid var(--line-gold);
-    border-left: 1px solid var(--line-gold);
+  .lote-card.active::before {
+    top: -1px; left: -1px;
+    border-top: 1px solid rgba(214, 186, 122, 0.7);
+    border-left: 1px solid rgba(214, 186, 122, 0.7);
+    border-radius: 4px 0 0 0;
   }
 
-  .price-frame::after {
-    bottom: 0; right: 0;
-    border-bottom: 1px solid var(--line-gold);
-    border-right: 1px solid var(--line-gold);
+  .lote-card.active::after {
+    bottom: -1px; right: -1px;
+    border-bottom: 1px solid rgba(214, 186, 122, 0.7);
+    border-right: 1px solid rgba(214, 186, 122, 0.7);
+    border-radius: 0 0 4px 0;
   }
 
-  .price-inner::before,
-  .price-inner::after {
-    content: '';
-    position: absolute;
-    width: 28px;
-    height: 28px;
+  /* Header row: label + badge */
+  .lote-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
   }
 
-  .price-inner::before {
-    top: 0; right: 0;
-    border-top: 1px solid var(--line-gold);
-    border-right: 1px solid var(--line-gold);
+  .lote-label {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--text-muted);
   }
 
-  .price-inner::after {
-    bottom: 0; left: 0;
-    border-bottom: 1px solid var(--line-gold);
-    border-left: 1px solid var(--line-gold);
+  .lote-card.active .lote-label {
+    color: var(--gold-soft);
+    opacity: 0.9;
   }
 
-  .price-inner {
-    position: relative;
+  /* Ativo badge */
+  .lote-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-sans);
+    font-size: 0.5625rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    background: rgba(214, 186, 122, 0.1);
+    border: 1px solid rgba(214, 186, 122, 0.25);
+    border-radius: 2px;
+    padding: 3px 8px;
   }
 
-  .price-display {
+  .lote-badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+    box-shadow: 0 0 6px rgba(237, 214, 136, 0.7);
+    animation: livePulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  /* Lock icon for locked cards */
+  .lote-lock {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Price */
+  .lote-price {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 10vw, 6.5rem);
+    font-size: clamp(3rem, 6vw, 4.75rem);
     font-weight: 400;
     line-height: 1;
     color: var(--gold-soft);
-    text-shadow: 0 0 60px rgba(214, 186, 122, 0.25);
-    margin: 0;
     letter-spacing: 0.03em;
-    display: block;
+    text-shadow: 0 0 60px rgba(214, 186, 122, 0.28);
+    margin-bottom: 0.4rem;
   }
 
-  .price-label {
+  .lote-card.locked .lote-price,
+  .lote-card.closed .lote-price {
+    color: var(--text-muted);
+    text-shadow: none;
+  }
+
+  .lote-price-sub {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-style: italic;
+    color: var(--gold-soft);
+    opacity: 0.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .lote-opens {
     font-family: var(--font-sans);
     font-size: 0.6875rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--text-muted);
-    margin-top: 0.75rem;
-    display: block;
+    margin-top: auto;
+    padding-top: 1.25rem;
   }
 
-  /* Rational text */
+  /* ---- Countdown ---- */
+
+  .lote-countdown-wrap {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(214, 186, 122, 0.12);
+  }
+
+  .lote-countdown-label {
+    font-family: var(--font-sans);
+    font-size: 0.5625rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.875rem;
+  }
+
+  .lote-countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+  }
+
+  .lote-countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .lote-countdown-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--text-main);
+    letter-spacing: 0.04em;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(214, 186, 122, 0.12);
+    border-radius: 3px;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .lote-countdown-unit-label {
+    font-family: var(--font-sans);
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* "Últimos dias" — shown before countdown activates */
+  .lote-lastdays {
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(214, 186, 122, 0.12);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    opacity: 0.85;
+  }
+
+  .lote-lastdays-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold-bright);
+    box-shadow: 0 0 8px rgba(237, 214, 136, 0.7);
+    animation: livePulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  /* Single-card layout (before May 4) */
+  .lotes-grid.single {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* CTA inside active card */
+  .lote-cta {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.875rem;
+  }
+
+  .lote-cta a, .lote-cta button {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lote-cta-sub {
+    font-family: var(--font-sans);
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    opacity: 0.7;
+    text-align: center;
+  }
+
+  /* ---- Rational text ---- */
+
   .offer-rational {
     max-width: 580px;
     margin: 0 auto;
@@ -1641,7 +1840,6 @@ Error generating stack: `+e.message+`
     color: var(--text-main);
   }
 
-  /* Strong statement */
   .offer-strong-stmt {
     border-left: 1px solid var(--danger-soft);
     padding: 1.25rem 1.5rem;
@@ -1681,10 +1879,25 @@ Error generating stack: `+e.message+`
     margin-bottom: 3rem;
   }
 
-  @media (max-width: 480px) {
-    .price-frame { padding: 1.5rem 2rem; }
+  @media (max-width: 700px) {
+    .lotes-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .lote-card.locked,
+    .lote-card.closed {
+      opacity: 0.5;
+    }
   }
-`,Ie=[{title:`"Mas eu já fiz tantos cursos…"`,content:(0,b.jsx)(`p`,{children:`Exatamente. E nenhum deles foi um protocolo de Destruir e Descriar contratos de linhagem. Você aprendeu sobre os padrões. O Protocolo 33 vai para onde os contratos estão guardados. Essa é a diferença.`})},{title:`"Não sei se é o momento certo…"`,content:(0,b.jsx)(`p`,{children:`O momento certo chegará junto com o dinheiro que você ainda não tem? Você está esperando condições para criar as condições. Essa é a mecânica da escassez funcionando ao vivo, na sua frente.`})},{title:`"E se eu não conseguir acompanhar os 33 dias?"`,content:(0,b.jsx)(`p`,{children:`As aulas são gravadas. Você acessa no seu ritmo. Mas olha, se você não consegue se comprometer com 10 minutos por dia durante 33 dias, o Protocolo já está fazendo o trabalho: está mostrando exatamente onde o seu não-compromisso com você mesma mora.`})},{title:`"Isso funciona de verdade?"`,content:(0,b.jsx)(`p`,{children:`Depende de uma coisa: de você. O processo funciona. A pergunta é se você vai usar de verdade ou vai mais uma vez assistir passivamente esperando que algo mude por osmose. A ferramenta é a ferramenta. A potência é sua.`})}],Le=()=>{let e=w();return(0,b.jsxs)(S,{id:`offer`,dark:!0,children:[(0,b.jsx)(`style`,{children:Fe}),(0,b.jsxs)(`div`,{className:`offer-wrap`,ref:e,children:[(0,b.jsxs)(`div`,{className:`offer-price-block reveal`,children:[(0,b.jsx)(`span`,{className:`eyebrow`,children:`O Investimento`}),(0,b.jsx)(`div`,{className:`price-frame`,children:(0,b.jsxs)(`div`,{className:`price-inner`,children:[(0,b.jsx)(`span`,{className:`price-display`,children:`R$ 333`}),(0,b.jsx)(`span`,{className:`price-label`,children:`O número da criação. O número da prontidão.`})]})}),(0,b.jsxs)(`div`,{className:`offer-rational`,children:[(0,b.jsx)(`p`,{children:(0,b.jsx)(`strong`,{children:`Deixa eu ser direta com você.`})}),(0,b.jsxs)(`p`,{children:[`R$ 333 divididos por 33 dias são `,(0,b.jsx)(`strong`,{children:`R$ 10,09 por dia`}),`. Menos do que um delivery de fim de semana. Menos do que uma sessão de terapia. Muito menos do que o custo de mais um ano vivendo exatamente onde você está agora.`]}),(0,b.jsx)(`p`,{className:`offer-strong-stmt`,children:`Se você não está disposta a colocar R$ 10 por dia na sua própria potência, o Protocolo 33 já te deu a primeira lição de graça: Você ainda acha que a sua escassez é mais segura do que a sua expansão.`})]}),(0,b.jsxs)(`div`,{className:`offer-cta`,children:[(0,b.jsx)(C,{href:`https://pay.hotmart.com/G105503561S?off=96dhtv1b`,target:`_blank`,rel:`noopener noreferrer`,style:{fontSize:`0.8125rem`,padding:`20px 52px`},children:`INICIAR OS 33 PROTOCOLOS`}),(0,b.jsx)(`p`,{className:`offer-cta-sub`,children:`33 dias · 33 contratos · Uma nova linhagem`})]})]}),(0,b.jsx)(le,{type:`ornament`}),(0,b.jsxs)(`div`,{className:`objections-wrap reveal reveal-delay-1`,children:[(0,b.jsx)(`h3`,{children:`Ainda na dúvida?`}),(0,b.jsx)(Pe,{items:Ie})]})]})]})},Re=(...e)=>e.filter((e,t,n)=>!!e&&e.trim()!==``&&n.indexOf(e)===t).join(` `).trim(),ze=e=>e.replace(/([a-z0-9])([A-Z])/g,`$1-$2`).toLowerCase(),Be=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(e,t,n)=>n?n.toUpperCase():t.toLowerCase()),Ve=e=>{let t=Be(e);return t.charAt(0).toUpperCase()+t.slice(1)},He={xmlns:`http://www.w3.org/2000/svg`,width:24,height:24,viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:2,strokeLinecap:`round`,strokeLinejoin:`round`},Ue=e=>{for(let t in e)if(t.startsWith(`aria-`)||t===`role`||t===`title`)return!0;return!1},We=(0,_.createContext)({}),Ge=()=>(0,_.useContext)(We),Ke=(0,_.forwardRef)(({color:e,size:t,strokeWidth:n,absoluteStrokeWidth:r,className:i=``,children:a,iconNode:o,...s},c)=>{let{size:l=24,strokeWidth:u=2,absoluteStrokeWidth:d=!1,color:f=`currentColor`,className:p=``}=Ge()??{},m=r??d?Number(n??u)*24/Number(t??l):n??u;return(0,_.createElement)(`svg`,{ref:c,...He,width:t??l??He.width,height:t??l??He.height,stroke:e??f,strokeWidth:m,className:Re(`lucide`,p,i),...!a&&!Ue(s)&&{"aria-hidden":`true`},...s},[...o.map(([e,t])=>(0,_.createElement)(e,t)),...Array.isArray(a)?a:[a]])}),qe=(e,t)=>{let n=(0,_.forwardRef)(({className:n,...r},i)=>(0,_.createElement)(Ke,{ref:i,iconNode:t,className:Re(`lucide-${ze(Ve(e))}`,`lucide-${e}`,n),...r}));return n.displayName=Ve(e),n},Je=qe(`file-x`,[[`path`,{d:`M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z`,key:`1oefj6`}],[`path`,{d:`M14 2v5a1 1 0 0 0 1 1h5`,key:`wfsgrz`}],[`path`,{d:`m14.5 12.5-5 5`,key:`b62r18`}],[`path`,{d:`m9.5 12.5 5 5`,key:`1rk7el`}]]),Ye=qe(`gem`,[[`path`,{d:`M10.5 3 8 9l4 13 4-13-2.5-6`,key:`b3dvk1`}],[`path`,{d:`M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z`,key:`7w4byz`}],[`path`,{d:`M2 9h20`,key:`16fsjt`}]]),Xe=qe(`smartphone`,[[`rect`,{width:`14`,height:`20`,x:`5`,y:`2`,rx:`2`,ry:`2`,key:`1yt0o3`}],[`path`,{d:`M12 18h.01`,key:`mhygvu`}]]),Ze=qe(`sparkles`,[[`path`,{d:`M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z`,key:`1s2grr`}],[`path`,{d:`M20 2v4`,key:`1rf3ol`}],[`path`,{d:`M22 4h-4`,key:`gwowj6`}],[`circle`,{cx:`4`,cy:`20`,r:`2`,key:`6kqj1y`}]]),Qe=`/`,$e=`
+
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(237, 214, 136, 0.7); }
+    50%       { opacity: 0.35; box-shadow: 0 0 3px rgba(237, 214, 136, 0.2); }
+  }
+`,Ge=[{title:`"Mas eu já fiz tantos cursos…"`,content:(0,b.jsx)(`p`,{children:`Exatamente. E nenhum deles foi um protocolo de Destruir e Descriar contratos de linhagem. Você aprendeu sobre os padrões. O Protocolo 33 vai para onde os contratos estão guardados. Essa é a diferença.`})},{title:`"Não sei se é o momento certo…"`,content:(0,b.jsx)(`p`,{children:`O momento certo chegará junto com o dinheiro que você ainda não tem? Você está esperando condições para criar as condições. Essa é a mecânica da escassez funcionando ao vivo, na sua frente.`})},{title:`"E se eu não conseguir acompanhar os 33 dias?"`,content:(0,b.jsx)(`p`,{children:`As aulas são gravadas. Você acessa no seu ritmo. Mas olha, se você não consegue se comprometer com 10 minutos por dia durante 33 dias, o Protocolo já está fazendo o trabalho: está mostrando exatamente onde o seu não-compromisso com você mesma mora.`})},{title:`"Isso funciona de verdade?"`,content:(0,b.jsx)(`p`,{children:`Depende de uma coisa: de você. O processo funciona. A pergunta é se você vai usar de verdade ou vai mais uma vez assistir passivamente esperando que algo mude por osmose. A ferramenta é a ferramenta. A potência é sua.`})}];function Ke({lote:e,status:t,countdown:n,showCountdown:r,ctaHref:i}){return(0,b.jsxs)(`div`,{className:`lote-card ${t}`,children:[(0,b.jsxs)(`div`,{className:`lote-header`,children:[(0,b.jsx)(`span`,{className:`lote-label`,children:e.label}),t===`active`&&(0,b.jsxs)(`span`,{className:`lote-badge`,children:[(0,b.jsx)(`span`,{className:`lote-badge-dot`,"aria-hidden":`true`}),`Ativo`]}),t===`locked`&&(0,b.jsx)(`span`,{className:`lote-lock`,children:(0,b.jsx)(He,{})})]}),(0,b.jsx)(`p`,{className:`lote-price`,children:e.price}),e.sub&&t===`active`&&(0,b.jsx)(`p`,{className:`lote-price-sub`,children:e.sub}),t===`active`&&r&&n&&(0,b.jsxs)(`div`,{className:`lote-countdown-wrap`,children:[(0,b.jsx)(`p`,{className:`lote-countdown-label`,children:`Encerra em`}),(0,b.jsx)(`div`,{className:`lote-countdown`,children:[{val:n.days,label:`dias`},{val:n.hours,label:`horas`},{val:n.min,label:`min`},{val:n.sec,label:`seg`}].map(({val:e,label:t})=>(0,b.jsxs)(`div`,{className:`lote-countdown-unit`,children:[(0,b.jsx)(`span`,{className:`lote-countdown-num`,children:e}),(0,b.jsx)(`span`,{className:`lote-countdown-unit-label`,children:t})]},t))})]}),t===`active`&&!r&&(0,b.jsxs)(`div`,{className:`lote-lastdays`,children:[(0,b.jsx)(`span`,{className:`lote-lastdays-dot`,"aria-hidden":`true`}),`Últimos dias`]}),t===`active`&&i&&(0,b.jsxs)(`div`,{className:`lote-cta`,children:[(0,b.jsx)(C,{href:i,target:`_blank`,rel:`noopener noreferrer`,style:{fontSize:`0.75rem`,padding:`16px 28px`,width:`100%`},children:`INICIAR OS 33 PROTOCOLOS`}),(0,b.jsx)(`span`,{className:`lote-cta-sub`,children:`33 dias · 33 contratos · Uma nova linhagem`})]}),t===`locked`&&(0,b.jsx)(`p`,{className:`lote-opens`,children:r&&e.opensLabel?e.opensLabel:`Em breve`})]})}var qe=()=>{let e=w(),[t,n]=(0,_.useState)(()=>new Date);(0,_.useEffect)(()=>{let e=setInterval(()=>n(new Date),1e3);return()=>clearInterval(e)},[]);let r=ze(t),i=Ve(Be(r)),a=t>=Fe;function o(e){return e<r?`closed`:e===r?`active`:`locked`}return(0,b.jsxs)(S,{id:`offer`,dark:!0,children:[(0,b.jsx)(`style`,{children:We}),(0,b.jsxs)(`div`,{className:`offer-wrap`,ref:e,children:[(0,b.jsx)(`div`,{className:`offer-hd reveal`,children:(0,b.jsx)(`span`,{className:`eyebrow`,children:`O Investimento`})}),(0,b.jsx)(`div`,{className:`lotes-grid reveal reveal-delay-1`,children:Ue.map(e=>{let t=o(e.number);return(0,b.jsx)(Ke,{lote:e,status:t,showCountdown:a,countdown:t===`active`?i:null,ctaHref:t===`active`?e.href:null},e.number)})}),(0,b.jsxs)(`div`,{className:`offer-rational reveal reveal-delay-2`,children:[(0,b.jsx)(`p`,{children:(0,b.jsx)(`strong`,{children:`Deixa eu ser direta com você.`})}),(0,b.jsxs)(`p`,{children:[`R$ 333 divididos por 33 dias são `,(0,b.jsx)(`strong`,{children:`R$ 10,09 por dia`}),`. Menos do que um delivery de fim de semana. Menos do que uma sessão de terapia. Muito menos do que o custo de mais um ano vivendo exatamente onde você está agora.`]}),(0,b.jsx)(`p`,{className:`offer-strong-stmt`,children:`Se você não está disposta a colocar R$ 10 por dia na sua própria potência, o Protocolo 33 já te deu a primeira lição de graça: Você ainda acha que a sua escassez é mais segura do que a sua expansão.`})]}),(0,b.jsx)(le,{type:`ornament`}),(0,b.jsxs)(`div`,{className:`objections-wrap reveal reveal-delay-1`,children:[(0,b.jsx)(`h3`,{children:`Ainda na dúvida?`}),(0,b.jsx)(Pe,{items:Ge})]})]})]})},Je=(...e)=>e.filter((e,t,n)=>!!e&&e.trim()!==``&&n.indexOf(e)===t).join(` `).trim(),Ye=e=>e.replace(/([a-z0-9])([A-Z])/g,`$1-$2`).toLowerCase(),Xe=e=>e.replace(/^([A-Z])|[\s-_]+(\w)/g,(e,t,n)=>n?n.toUpperCase():t.toLowerCase()),Ze=e=>{let t=Xe(e);return t.charAt(0).toUpperCase()+t.slice(1)},Qe={xmlns:`http://www.w3.org/2000/svg`,width:24,height:24,viewBox:`0 0 24 24`,fill:`none`,stroke:`currentColor`,strokeWidth:2,strokeLinecap:`round`,strokeLinejoin:`round`},$e=e=>{for(let t in e)if(t.startsWith(`aria-`)||t===`role`||t===`title`)return!0;return!1},et=(0,_.createContext)({}),tt=()=>(0,_.useContext)(et),nt=(0,_.forwardRef)(({color:e,size:t,strokeWidth:n,absoluteStrokeWidth:r,className:i=``,children:a,iconNode:o,...s},c)=>{let{size:l=24,strokeWidth:u=2,absoluteStrokeWidth:d=!1,color:f=`currentColor`,className:p=``}=tt()??{},m=r??d?Number(n??u)*24/Number(t??l):n??u;return(0,_.createElement)(`svg`,{ref:c,...Qe,width:t??l??Qe.width,height:t??l??Qe.height,stroke:e??f,strokeWidth:m,className:Je(`lucide`,p,i),...!a&&!$e(s)&&{"aria-hidden":`true`},...s},[...o.map(([e,t])=>(0,_.createElement)(e,t)),...Array.isArray(a)?a:[a]])}),rt=(e,t)=>{let n=(0,_.forwardRef)(({className:n,...r},i)=>(0,_.createElement)(nt,{ref:i,iconNode:t,className:Je(`lucide-${Ye(Ze(e))}`,`lucide-${e}`,n),...r}));return n.displayName=Ze(e),n},it=rt(`file-x`,[[`path`,{d:`M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z`,key:`1oefj6`}],[`path`,{d:`M14 2v5a1 1 0 0 0 1 1h5`,key:`wfsgrz`}],[`path`,{d:`m14.5 12.5-5 5`,key:`b62r18`}],[`path`,{d:`m9.5 12.5 5 5`,key:`1rk7el`}]]),at=rt(`gem`,[[`path`,{d:`M10.5 3 8 9l4 13 4-13-2.5-6`,key:`b3dvk1`}],[`path`,{d:`M17 3a2 2 0 0 1 1.6.8l3 4a2 2 0 0 1 .013 2.382l-7.99 10.986a2 2 0 0 1-3.247 0l-7.99-10.986A2 2 0 0 1 2.4 7.8l2.998-3.997A2 2 0 0 1 7 3z`,key:`7w4byz`}],[`path`,{d:`M2 9h20`,key:`16fsjt`}]]),ot=rt(`smartphone`,[[`rect`,{width:`14`,height:`20`,x:`5`,y:`2`,rx:`2`,ry:`2`,key:`1yt0o3`}],[`path`,{d:`M12 18h.01`,key:`mhygvu`}]]),st=rt(`sparkles`,[[`path`,{d:`M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z`,key:`1s2grr`}],[`path`,{d:`M20 2v4`,key:`1rf3ol`}],[`path`,{d:`M22 4h-4`,key:`gwowj6`}],[`circle`,{cx:`4`,cy:`20`,r:`2`,key:`6kqj1y`}]]),ct=`/`,lt=`
   .vision-wrap {
     max-width: var(--max-width);
     margin: 0 auto;
@@ -1769,7 +1982,7 @@ Error generating stack: `+e.message+`
     }
   }
 
-`,et=`
+`,ut=`
   .footer-area {
     background-color: var(--bg-soft);
     border-top: 1px solid var(--line);
@@ -1805,4 +2018,4 @@ Error generating stack: `+e.message+`
   @media (max-width: 480px) {
     .footer-area { padding: 4rem 18px 2rem; }
   }
-`,tt=()=>{let e=w(),t=w();return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsxs)(S,{id:`vision`,children:[(0,b.jsx)(`style`,{children:$e}),(0,b.jsxs)(`div`,{className:`vision-wrap`,ref:e,children:[(0,b.jsx)(`div`,{className:`vision-header reveal`,children:(0,b.jsx)(`h2`,{children:`Daqui a 33 dias você não vai ter "aprendido mais uma coisa."`})}),(0,b.jsxs)(`div`,{className:`vision-cards reveal reveal-delay-1`,children:[(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Je,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai ter revogado os contratos que decidiam, sem te pedir licença, quanto de dinheiro era permitido para alguém como você.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Xe,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai olhar para o aplicativo do banco sem aquele aperto no estômago.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Ye,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai cobrar pelo que vale sem dar descontos que ninguém pediu.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(Ze,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai receber sem minimizar. Vai gastar com alegria sem culpa. Vai ser a pessoa que chegou.`})]})]}),(0,b.jsxs)(`div`,{className:`vision-conclusion reveal reveal-delay-2`,children:[(0,b.jsx)(`p`,{children:`E quando a sua família te chamar de "mudou com o dinheiro", você vai sorrir.`}),(0,b.jsx)(`p`,{className:`vision-hl`,children:`Porque significa que funcionou.`})]})]})]}),(0,b.jsxs)(`footer`,{className:`footer-area`,ref:t,children:[(0,b.jsx)(`style`,{children:et}),(0,b.jsx)(`div`,{className:`footer-logo-wrap`,children:(0,b.jsx)(`img`,{src:`${Qe}images/miscon-logo.webp`,alt:`Missão Consciência`,loading:`lazy`})}),(0,b.jsx)(`div`,{className:`footer-bottom`,children:(0,b.jsxs)(`p`,{children:[`© `,new Date().getFullYear(),` Protocolo 33 · Todos os direitos reservados.`]})})]})]})};function nt(){return(0,_.useEffect)(()=>{document.querySelectorAll(`a[href^="#"]`).forEach(e=>{e.addEventListener(`click`,function(e){if(this.getAttribute(`href`)!==`#checkout`){e.preventDefault();let t=document.querySelector(this.getAttribute(`href`));t&&t.scrollIntoView({behavior:`smooth`})}})})},[]),(0,b.jsxs)(`div`,{className:`protocolo-33-app`,children:[(0,b.jsx)(re,{}),(0,b.jsx)(ae,{}),(0,b.jsx)(E,{}),(0,b.jsx)(me,{}),(0,b.jsx)(ge,{}),(0,b.jsx)(Se,{}),(0,b.jsx)(Te,{}),(0,b.jsx)(je,{}),(0,b.jsx)(Le,{}),(0,b.jsx)(tt,{})]})}(0,v.createRoot)(document.getElementById(`root`)).render((0,b.jsx)(_.StrictMode,{children:(0,b.jsx)(nt,{})}));
+`,dt=()=>{let e=w(),t=w();return(0,b.jsxs)(b.Fragment,{children:[(0,b.jsxs)(S,{id:`vision`,children:[(0,b.jsx)(`style`,{children:lt}),(0,b.jsxs)(`div`,{className:`vision-wrap`,ref:e,children:[(0,b.jsx)(`div`,{className:`vision-header reveal`,children:(0,b.jsx)(`h2`,{children:`Daqui a 33 dias você não vai ter "aprendido mais uma coisa."`})}),(0,b.jsxs)(`div`,{className:`vision-cards reveal reveal-delay-1`,children:[(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(it,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai ter revogado os contratos que decidiam, sem te pedir licença, quanto de dinheiro era permitido para alguém como você.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(ot,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai olhar para o aplicativo do banco sem aquele aperto no estômago.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(at,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai cobrar pelo que vale sem dar descontos que ninguém pediu.`})]}),(0,b.jsxs)(`div`,{className:`vision-card`,children:[(0,b.jsx)(st,{className:`vision-card-icon`,size:32,strokeWidth:1.5}),(0,b.jsx)(`p`,{children:`Você vai receber sem minimizar. Vai gastar com alegria sem culpa. Vai ser a pessoa que chegou.`})]})]}),(0,b.jsxs)(`div`,{className:`vision-conclusion reveal reveal-delay-2`,children:[(0,b.jsx)(`p`,{children:`E quando a sua família te chamar de "mudou com o dinheiro", você vai sorrir.`}),(0,b.jsx)(`p`,{className:`vision-hl`,children:`Porque significa que funcionou.`})]})]})]}),(0,b.jsxs)(`footer`,{className:`footer-area`,ref:t,children:[(0,b.jsx)(`style`,{children:ut}),(0,b.jsx)(`div`,{className:`footer-logo-wrap`,children:(0,b.jsx)(`img`,{src:`${ct}images/miscon-logo.webp`,alt:`Missão Consciência`,loading:`lazy`})}),(0,b.jsx)(`div`,{className:`footer-bottom`,children:(0,b.jsxs)(`p`,{children:[`© `,new Date().getFullYear(),` Protocolo 33 · Todos os direitos reservados.`]})})]})]})};function ft(){return(0,_.useEffect)(()=>{document.querySelectorAll(`a[href^="#"]`).forEach(e=>{e.addEventListener(`click`,function(e){if(this.getAttribute(`href`)!==`#checkout`){e.preventDefault();let t=document.querySelector(this.getAttribute(`href`));t&&t.scrollIntoView({behavior:`smooth`})}})})},[]),(0,b.jsxs)(`div`,{className:`protocolo-33-app`,children:[(0,b.jsx)(re,{}),(0,b.jsx)(ae,{}),(0,b.jsx)(E,{}),(0,b.jsx)(me,{}),(0,b.jsx)(ge,{}),(0,b.jsx)(Se,{}),(0,b.jsx)(Te,{}),(0,b.jsx)(je,{}),(0,b.jsx)(qe,{}),(0,b.jsx)(dt,{})]})}(0,v.createRoot)(document.getElementById(`root`)).render((0,b.jsx)(_.StrictMode,{children:(0,b.jsx)(ft,{})}));
